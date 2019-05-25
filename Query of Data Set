@@ -1,0 +1,77 @@
+SELECT * FROM tutorial.aapl_historical_stock_price
+
+SELECT COUNT(*)
+  FROM tutorial.aapl_historical_stock_price
+(Will show the number of rows in the data set)
+  
+  SELECT COUNT(high)
+  FROM tutorial.aapl_historical_stock_price
+  (Will show the number of rows in the high column)
+  
+  SELECT COUNT(date) AS count_of_date
+  FROM tutorial.aapl_historical_stock_price
+(renaming the # of rows in the date column as count_of_date)
+
+SELECT SUM(volume)
+  FROM tutorial.aapl_historical_stock_price
+(Adding all the values in the volume column)
+
+SELECT MIN(volume) AS min_volume,
+       MAX(volume) AS max_volume
+  FROM tutorial.aapl_historical_stock_price
+  (renaming min and max as min_volume and max_volume and finding the min and max values)
+  
+  SELECT AVG(high)
+  FROM tutorial.aapl_historical_stock_price
+ WHERE high IS NOT NULL
+(finding the average of the high column or high stock values)
+
+SELECT year,
+       COUNT(*) AS count
+  FROM tutorial.aapl_historical_stock_price
+ GROUP BY year
+ (Counting the number of data from each year and organizing them into years)
+ 
+ SELECT year,
+       month,
+       COUNT(*) AS count
+  FROM tutorial.aapl_historical_stock_price
+ GROUP BY year, month
+(Organizing the number of data from each year and organizing them based on year and months posted)
+(counting the number of data entries based on year and month and organizing them based on months and then years)
+
+SELECT year,
+       AVG(close - open) AS avg_daily_change
+  FROM tutorial.aapl_historical_stock_price
+ GROUP BY 1
+ ORDER BY 1
+(calculating the average daily price changes)
+
+SELECT year,
+       month,
+       MAX(high) AS month_high
+  FROM tutorial.aapl_historical_stock_price
+ GROUP BY year, month
+HAVING MAX(high) > 400
+ ORDER BY year, month
+(Query searching for apple stocks being higher than 400)
+
+SELECT DISTINCT month
+  FROM tutorial.aapl_historical_stock_price
+(viewing distinct, or unique months)
+
+SELECT DISTINCT year, month
+  FROM tutorial.aapl_historical_stock_price
+(viewing both distinct years and months)
+
+SELECT year,
+       COUNT(DISTINCT month) AS months_count
+  FROM tutorial.aapl_historical_stock_price
+ GROUP BY year
+ ORDER BY year
+ 
+ (distinct # of months in each year in the data set)
+ 
+ 
+
+
